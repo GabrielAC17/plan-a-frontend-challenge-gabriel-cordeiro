@@ -1,0 +1,7 @@
+{
+  "name": "plan-a-frontend-challenge-gabriel-cordeiro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
