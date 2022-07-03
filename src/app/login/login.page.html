@@ -1,0 +1,44 @@
+<ion-content>
+  <div id="container">
+    <div class="ion-text-center">
+      <strong>Plan a Frontend</strong>
+      <p>Gabriel de Andrade Cordeiro</p>
+    </div>
+    <br>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input id="email" formControlName="email" type="email" clearInput autocomplete="email"></ion-input>
+          <p class="alert alert-danger" *ngIf="loginForm.controls['email'].hasError('email')">
+            Must be a valid email address
+          </p>
+          <p class="alert alert-danger" *ngIf="loginForm.controls['email'].hasError('required')">
+            This field is required
+          </p>
+        </ion-item>
+      </div>
+    
+      <div>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input id="password" formControlName="password" type="password" clearInput autocomplete="current-password"></ion-input>
+          <p class="alert alert-danger" *ngIf="loginForm.controls['password'].hasError('minlength')">
+            Password must be at least 6 characters long
+          </p>
+          <p class="alert alert-danger" *ngIf="loginForm.controls['password'].hasError('required')">
+            This field is required
+          </p>
+        </ion-item>
+      </div>
+  
+      <br>
+      <ion-button type="submit" expand="block" [disabled]="!loginForm.valid">Login</ion-button>
+      <p class="alert alert-danger" *ngIf="showError">
+        Coudn't login. Please check your credentials.
+      </p>
+    </form>
+    
+  </div>
+</ion-content>

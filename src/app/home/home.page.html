@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title *ngIf="movie">
+      {{movie.title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,25 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title *ngIf="movie" size="large">{{movie.title}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div *ngIf="movie" id="container">
+    <ion-img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/original/' + movie.poster_path"></ion-img>
+    <strong>{{movie.title}}</strong>
+    <p>{{movie.original_title}}</p>
+    <br>
+    <p>{{movie.overview}}</p>
+    <br>
+    <p>Genres:</p>
+    <ul>
+      <li *ngFor="let genre of movie.genres">
+        {{genre.name}}
+      </li>
+    </ul>
+
+    <br>
+    <p>Release date: {{movie.release_date}}</p>
   </div>
 </ion-content>
